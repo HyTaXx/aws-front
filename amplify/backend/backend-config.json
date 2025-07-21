@@ -1,1 +1,9 @@
-{}
+{
+  "function": {
+    "frontaws8bfa4a66": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}
