@@ -3,20 +3,11 @@ backend:
     phases:
         preBuild:
             commands:
-                - export PYENV_ROOT="$HOME/.pyenv"
-                - export PATH="$PYENV_ROOT/bin:$PATH"
-                - eval "$(pyenv init -)" || true
-                - pyenv install 3.13.1 || pyenv install 3.13.0 || echo "Python 3.13 already installed"
-                - pyenv global 3.13.1 || pyenv global 3.13.0
-                - python --version
+                - pip3 install --user pipenv
                 - python3 --version
-                - python -m pip install --upgrade pip
-                - python -m pip install pipenv
-                - export PIPENV_VENV_IN_PROJECT=1
-                - export PIPENV_IGNORE_VIRTUALENVS=1
-                - export PIPENV_PYTHON=$(which python)
-                - rm -rf /root/.local/share/virtualenvs/* || true
-                - rm -rf .venv || true
+                - pip3 install --upgrade pip
+                - pip3 install --user --upgrade setuptools wheel
+                - amplifyPush --simple
         build:
             commands:
                 - "# Execute Amplify CLI with the helper script"
